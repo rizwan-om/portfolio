@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="image/logo/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammed Rishal K P | Senior Accountant</title>
@@ -182,10 +183,49 @@
                 radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
                 var(--bg-main);
-            text-align: center;
             padding-top: 5rem;
             position: relative;
             overflow: hidden;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            max-width: 1200px;
+            width: 100%;
+            text-align: left;
+            z-index: 10;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 0 0 400px;
+            height: 400px;
+            position: relative;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border: 4px solid var(--gray-200);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            transition: all 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            border-radius: 50%;
+            border-color: var(--accent);
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
         }
 
         .floating-graphics {
@@ -740,6 +780,15 @@
         }
 
         @media (max-width: 900px) {
+            .hero-container {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2.5rem;
+            }
+            .hero-image {
+                flex: 0 0 300px;
+                height: 300px;
+            }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .hero h1 { font-size: 3rem; }
             section { padding: 4rem 5%; }
@@ -824,7 +873,7 @@
 
     <!-- NAVBAR -->
     <nav id="navbar">
-        <a href="#" class="logo">MR<span>.</span></a>
+        <a href="#" class="logo">RISHAL<span>.</span></a>
         
         <!-- Mobile Toggle Button -->
         <button class="mobile-menu-btn" id="mobile-menu-btn">
@@ -851,13 +900,19 @@
             <i class="fas fa-coins floating-icon" style="bottom: 15%; right: 10%; font-size: 2rem; animation-delay: 1s;"></i>
             <i class="fas fa-file-lines floating-icon" style="top: 50%; right: 25%; font-size: 1.5rem; animation-delay: 3s;"></i>
         </div>
-        <div class="hero-content" style="position: relative; z-index: 1;">
-            <h1>Muhammed Rishal K P</h1>
-            <h2>Professional Accountant</h2>
-            <p>ENSURING FINANCIAL INTEGRITY AND OPERATIONAL EFFICIENCY THROUGH METICULOUS ACCOUNTING, COMPREHENSIVE RECONCILIATION, AND STRATEGIC FINANCIAL MANAGEMENT.</p>
-            <div class="btn-group">
-                <a href="#contact" class="btn btn-primary">Contact Me</a>
-                <a href="#" class="btn btn-outline" download>Download CV</a>
+        
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Muhammed Rishal K P</h1>
+                <h2>Professional Accountant</h2>
+                <p>Ensuring financial integrity and operational efficiency through meticulous accounting, comprehensive reconciliation, and strategic financial management.</p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn btn-primary">Contact Me</a>
+                    <a href="https://drive.google.com/file/d/1asQtUw8FPKn8OUDl96knCB3UT7H1e6Nl/view?pli=1" class="btn btn-outline" download>Download CV</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="image/photo/rishal.jpeg" alt="Muhammed Rishal K P">
             </div>
         </div>
     </section>
@@ -1113,22 +1168,26 @@
     <section id="contact" class="reveal">
         <h2 class="section-title">Contact Me</h2>
         <div class="contact-grid">
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
+            <a href="mailto:muhammedqa1177@gmail.com" style="text-decoration: none; color: inherit; display: block;">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>muhammedqa1177@gmail.com</p>
                 </div>
-                <h3>Email</h3>
-                <a href="mailto:muhammedqa1177@gmail.com">muhammedqa1177@gmail.com</a>
-            </div>
-            
+            </a>
+            <a href="mailto:muhammedqa1177@gmail.com" style="text-decoration: none; color: inherit; display: block;">
             <div class="contact-card">
                 <div class="contact-icon">
                     <i class="fas fa-phone"></i>
                 </div>
                 <h3>Phone</h3>
-                <a href="tel:+97466233477">+974 66233477</a>
+                <p>+974 66233477</p>
             </div>
+            </a>
 
+            <a href="https://maps.app.goo.gl/K9SAPcy9PvMJReu37" style="text-decoration: none; color: inherit; display: block;">
             <div class="contact-card">
                 <div class="contact-icon">
                     <i class="fas fa-location-dot"></i>
@@ -1136,6 +1195,7 @@
                 <h3>Location</h3>
                 <p>Doha, Qatar</p>
             </div>
+            </a>
         </div>
     </section>
 
@@ -1143,7 +1203,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                MR<span>.</span>
+                RISHAL<span>.</span>
             </div>
             <p style="color: var(--text-light);">Professional Financial Management & Accounting Services</p>
             
@@ -1153,6 +1213,9 @@
                 </a>
                 <a href="https://www.instagram.com/muhammed.rishal_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-link" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
+                </a>
+                <a href="tel:+97466233477" class="social-link" aria-label="Call">
+                    <i class="fas fa-phone"></i>
                 </a>
                 <a href="mailto:muhammedqa1177@gmail.com" class="social-link" aria-label="Email">
                     <i class="fas fa-envelope"></i>
