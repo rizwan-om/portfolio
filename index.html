@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Rishal K P | Senior Accountant</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Premium Dark Business Color Palette */
+            --primary: #f8fafc;        /* White text for headings */
+            --secondary: #94a3b8;      
+            --accent: #38bdf8;         /* Bright Azure Blue for nice contrast on dark */
+            --text-main: #cbd5e1;      /* Light gray body text */
+            --text-light: #94a3b8;     /* Muted gray text */
+            --bg-main: #0b1120;        /* Very dark navy / almost black */
+            --bg-alt: #0f172a;         /* Alternating section background */
+            --bg-card: rgba(30, 41, 59, 0.7); /* Glassmorphism background */
+            --white: #ffffff;
+            --gray-200: rgba(255, 255, 255, 0.1); /* Borders for glassmorphism */
+            --gray-300: #475569;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-glow: rgba(56, 189, 248, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scroll Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 3px;
+            z-index: 2000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--accent), #60a5fa);
+            width: 0%;
+        }
+
+        /* Global Grain Texture */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Nav Mobile Menu Icon */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* ===== GENERAL SECTIONS ===== */
+        section {
+            padding: 6rem 5%;
+            min-height: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3.5rem;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                var(--bg-main);
+            text-align: center;
+            padding-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-graphics {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.15;
+            color: var(--accent);
+            animation: float 8s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-main);
+            box-shadow: 0 4px 6px rgba(56, 189, 248, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(56, 189, 248, 0.4);
+            color: var(--bg-main);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--gray-300);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--bg-main);
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        /* ===== ABOUT ME ===== */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid var(--gray-200);
+            backdrop-filter: blur(12px);
+            text-align: justify;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(56, 189, 248, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== SKILLS & EXPERTISE ===== */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            background: var(--bg-card);
+            color: var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tag i {
+            color: var(--accent);
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(56, 189, 248, 0.15);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        /* ===== WORK EXPERIENCE ===== */
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--gray-200);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 16px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 4px solid var(--bg-main);
+            box-shadow: 0 0 0 2px var(--gray-200);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid var(--gray-200);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(56,189,248,0.2);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+        
+        .timeline-content h4 {
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+        }
+
+        .timeline-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .timeline-content li::before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+
+        /* ===== GRID CONTAINERS FOR CARDS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid var(--gray-200);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, transparent 100%);
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            background: rgba(56,189,248,0.1);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .card p {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Lists in Cards */
+        .card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card li {
+            padding: 0.6rem 0;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+        }
+        .card li:last-child {
+            border-bottom: none;
+        }
+        .card li i {
+            color: var(--accent);
+            margin-right: 12px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .contact-icon {
+            width: 65px;
+            height: 65px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .contact-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #060913; /* Very dark shade purely for footer */
+            color: var(--text-main);
+            text-align: center;
+            padding: 4rem 5% 2rem;
+            position: relative;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+            color: var(--primary);
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-main);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.3);
+            border-color: var(--accent);
+        }
+
+        .copyright {
+            color: var(--gray-300);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--gray-200);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* ===== STATS SECTION ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3rem; }
+            section { padding: 4rem 5%; }
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(30, 41, 59, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 0;
+                text-align: center;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+                border-top: 1px solid rgba(255,255,255,0.05);
+            }
+
+            .nav-links.active {
+                max-height: 400px;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1.2rem;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+
+            .nav-links a::after {
+                display: none; 
+            }
+
+            .hero h1 { font-size: 2.5rem; }
+            .hero h2 { font-size: 1.4rem; }
+            
+            .timeline::before { left: 14px; }
+            .timeline-dot { left: 6px; width: 16px; height: 16px; }
+            .timeline-item { padding-left: 2.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .btn-group { flex-direction: column; width: 100%; }
+            .btn { width: 100%; text-align: center; }
+        }
+
+        /* Utility for fade in animation on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <a href="#" class="logo">MR<span>.</span></a>
+        
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="floating-graphics">
+            <i class="fas fa-calculator floating-icon" style="top: 15%; left: 10%; font-size: 3rem; animation-delay: 0s;"></i>
+            <i class="fas fa-chart-pie floating-icon" style="top: 25%; right: 15%; font-size: 2.5rem; animation-delay: 2s;"></i>
+            <i class="fas fa-file-invoice-dollar floating-icon" style="bottom: 20%; left: 20%; font-size: 3.5rem; animation-delay: 4s;"></i>
+            <i class="fas fa-coins floating-icon" style="bottom: 15%; right: 10%; font-size: 2rem; animation-delay: 1s;"></i>
+            <i class="fas fa-file-lines floating-icon" style="top: 50%; right: 25%; font-size: 1.5rem; animation-delay: 3s;"></i>
+        </div>
+        <div class="hero-content" style="position: relative; z-index: 1;">
+            <h1>Muhammed Rishal K P</h1>
+            <h2>Professional Accountant</h2>
+            <p>ENSURING FINANCIAL INTEGRITY AND OPERATIONAL EFFICIENCY THROUGH METICULOUS ACCOUNTING, COMPREHENSIVE RECONCILIATION, AND STRATEGIC FINANCIAL MANAGEMENT.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Contact Me</a>
+                <a href="#" class="btn btn-outline" download>Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section id="stats" style="padding: 2rem 5%; margin-top: -4rem; position: relative; z-index: 10;">
+        <div class="stats-grid">
+            <div class="stat-card reveal">
+                <i class="fas fa-calendar-check"></i>
+                <div class="stat-num">4+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card reveal">
+                <i class="fas fa-file-invoice"></i>
+                <div class="stat-num">1.5K+</div>
+                <div class="stat-label">Invoices Monthly</div>
+            </div>
+            <div class="stat-card reveal">
+                <i class="fas fa-building-columns"></i>
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Reconciliation</div>
+            </div>
+            <div class="stat-card reveal">
+                <i class="fas fa-users-gear"></i>
+                <div class="stat-num">50+</div>
+                <div class="stat-label">Vendor Relations</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about" class="reveal">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>I am a detail-oriented Senior Accountant based in Doha, Qatar, with over 4 years of proven experience across the aviation, construction, and CA firm sectors. My expertise lies in comprehensive financial accounting, including accounts receivable/payable, payroll processing, statutory compliance, and rigorous financial reconciliation. I have a strong foundation in utilizing software like QuickBooks Online to maintain accurate, up-to-date financial records for complex, multi-currency operations.</p>
+            <p>Throughout my career, I have successfully improved billing cycle efficiencies, managed high-precision multi-bank reconciliations, and ensured tight control over cash flow and vendor management. Furthermore, my multilingual background and dedication to resolving client queries allow me to bridge the gap between robust financial operations and excellent customer service.</p>
+        </div>
+    </section>
+
+    <!-- SKILLS & EXPERTISE -->
+    <section id="skills" style="background-color: var(--bg-alt);" class="reveal">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="skills-container">
+            <div class="skill-tag"><i class="fas fa-file-invoice-dollar"></i> Financial Accounting</div>
+            <div class="skill-tag"><i class="fas fa-exchange-alt"></i> AR & AP Management</div>
+            <div class="skill-tag"><i class="fas fa-laptop-file"></i> QuickBooks Online</div>
+            <div class="skill-tag"><i class="fas fa-building-columns"></i> Bank & Cash Reconciliation</div>
+            <div class="skill-tag"><i class="fas fa-users-cog"></i> Payroll Processing</div>
+            <div class="skill-tag"><i class="fas fa-file-invoice"></i> Billing & Invoicing</div>
+            <div class="skill-tag"><i class="fas fa-chart-line"></i> Cash Flow Management</div>
+            <div class="skill-tag"><i class="fas fa-magnifying-glass-dollar"></i> Financial Auditing</div>
+            <div class="skill-tag"><i class="fas fa-file-signature"></i> Tax Filing (GSTR/TDS/Income)</div>
+            <div class="skill-tag"><i class="fas fa-globe"></i> E-Commerce Accounting</div>
+            <div class="skill-tag"><i class="fas fa-money-bill-transfer"></i> Multi-Currency & Crypto</div>
+            <div class="skill-tag"><i class="fas fa-scale-balanced"></i> Statutory Compliance (UAE/Qatar/India)</div>
+            <div class="skill-tag"><i class="fas fa-table"></i> MS Excel (Pivot/VLOOKUP)</div>
+        </div>
+    </section>
+
+    <!-- WORK EXPERIENCE -->
+    <section id="experience" class="reveal">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            <!-- Experience 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">March 2024 – Present</span>
+                    <h3>Senior Accountant</h3>
+                    <h4>
+                        <a href="https://dynastyjet.com.qa/" style="color: rgb(56, 191, 248); text-decoration: none;" target="_blank" class="company-link">
+                            Dynasty Jet
+                        </a> | Doha, Qatar
+                    </h4>
+                    <ul>
+                        <li>Prepared and issued accurate charter flight invoices in strict compliance with commercial agreements.</li>
+                        <li>Drove billing cycle efficiency and managed end-to-end accounts receivable, maintaining consistently high collection rates.</li>
+                        <li>Maintained flawless customer invoice records in QuickBooks Online.</li>
+                        <li>Performed rigorous monthly reconciliations of multi-bank statements and petty cash accounts.</li>
+                        <li>Processed complex vendor payments, successfully resolved billing disputes, and coordinated monthly payroll with HR.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Experience 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">March 2024 – Present</span>
+                    <h3>Accountant (Remote)</h3>
+                    <h4>
+                        <a href="https://dynasty.aero/" style="color: rgb(56, 191, 248); text-decoration: none;" target="_blank" class="company-link">
+                            Dynasty Aviation Services
+                        </a> | Dubai, UAE
+                    </h4>
+                    <ul>
+                        <li>Processed diverse trip support, aviation fuel, and catering invoices catering to global clientele.</li>
+                        <li>Executed accurate multi-bank reconciliations and comprehensively managed AR/AP operations.</li>
+                        <li>Expertly handled multi-currency and cryptocurrency transactions (Binance, Dues X Pay) to facilitate modern payment flows.</li>
+                        <li>Acted as a primary point of contact for financial queries, blending accounting with dedicated client service.</li>
+                        <li>Actively supported year-end audit activities and maintained meticulous financial documentation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Experience 3 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">August 2023 – October 2023</span>
+                    <h3>Accountant & E-Commerce Support</h3>
+                    <h4>
+                        <a href="https://alunoorqa.com/" style="color: rgb(56, 191, 248); text-decoration: none;" target="_blank" class="company-link">
+                            Saif Al Deen Trading & Contracting WLL 
+                        </a> | Qatar
+                    </h4>
+                    <ul>
+                        <li>Designed, modernized, and implemented standardized financial systems and structured bookkeeping templates.</li>
+                        <li>Precisely recorded and reconciled volumes of customer and complex vendor invoices.</li>
+                        <li>Provided operational support for e-commerce initiatives, managing digital product assets alongside financial tracking.</li>
+                        <li>Collaborated closely with the sales department for accurate order tracking and seamless invoicing integrations.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Experience 4 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">May 2022 – May 2023</span>
+                    <h3>Accountant & Audit Clerk</h3>
+                    <h4>
+                        <a href="https://in.linkedin.com/company/pmc-and-company" style="color: rgb(56, 191, 248); text-decoration: none;" target="_blank" class="company-link">
+                            PMC & Company of Chartered Accountants
+                        </a> | India
+                    </h4>
+                    <ul>
+                        <li>Successfully filed monthly and quarterly GSTR returns for a portfolio of over 100 enterprise and SME clients.</li>
+                        <li>Executed detailed bank reconciliations across 50+ diverse corporate accounts.</li>
+                        <li>Actively assisted in complex statutory, forensic, and internal auditing procedures.</li>
+                        <li>Ensured total compliance by filing accurate TDS, TCS, and standardized Income Tax returns for multiple business setups.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL ACHIEVEMENTS -->
+    <section id="achievements" style="background-color: var(--bg-alt);" class="reveal">
+        <h2 class="section-title">Professional Achievements</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="card-icon fas fa-bolt"></i>
+                <h3>Billing Efficiency Optimization</h3>
+                <p>Significantly improved turnaround times in the aviation sector billing cycle, reducing delays in charter flight invoicing and ensuring rapid capital access.</p>
+            </div>
+            
+            <div class="card">
+                <i class="card-icon fas fa-chart-pie"></i>
+                <h3>High Collection Performance</h3>
+                <p>Maintained exceptionally strong accounts receivable collection rates via systematic follow-ups, strict policy enforcement, and relationship management.</p>
+            </div>
+
+            <div class="card">
+                <i class="card-icon fas fa-laptop-code"></i>
+                <h3>Digital Record Accuracy</h3>
+                <p>Architected completely accurate, audit-ready financial ecosystems inside QuickBooks Online for international aviation service platforms.</p>
+            </div>
+
+            <div class="card">
+                <i class="card-icon fas fa-check-double"></i>
+                <h3>Precision Reconciliation</h3>
+                <p>Performed extensive multi-bank and multi-currency reconciliations with absolute accuracy, catching and correcting systemic discrepancies rapidly.</p>
+            </div>
+
+            <div class="card">
+                <i class="card-icon fas fa-shield-halved"></i>
+                <h3>Compliance & Audit Readiness</h3>
+                <p>Ensured 100% compliance via robust preparation for internal/external audits, alongside flawlessly handling statutory compliance frameworks in Qatar, UAE, and India.</p>
+            </div>
+
+            <div class="card">
+                <i class="card-icon fas fa-bitcoin-sign"></i>
+                <h3>Modern Payment Ecosystems</h3>
+                <p>Successfully integrated and managed complex cryptocurrency accounting workflows via platforms like Binance, alongside traditional multi-currency wire systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="reveal">
+        <h2 class="section-title">Services I Offer</h2>
+        <div class="grid">
+            <!-- Core Accounting -->
+            <div class="card">
+                <i class="card-icon fas fa-book"></i>
+                <h3>Core Accounting & Bookkeeping</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> End-to-end Financial Accounting</li>
+                    <li><i class="fas fa-check"></i> AR & AP Management</li>
+                    <li><i class="fas fa-check"></i> Complex Bank Reconciliations</li>
+                    <li><i class="fas fa-check"></i> Precision Invoice Processing</li>
+                </ul>
+            </div>
+
+            <!-- Tax & Audit -->
+            <div class="card">
+                <i class="card-icon fas fa-scale-unbalanced"></i>
+                <h3>Compliance & Documentation</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> GSTR / TDS / TCS Filings</li>
+                    <li><i class="fas fa-check"></i> Statutory Income Tax Support</li>
+                    <li><i class="fas fa-check"></i> Audit Prep & Documentation</li>
+                    <li><i class="fas fa-check"></i> HR & Payroll Administration</li>
+                </ul>
+            </div>
+
+            <!-- Digital & Specialized -->
+            <div class="card">
+                <i class="card-icon fas fa-server"></i>
+                <h3>Digital Financial Management</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> QuickBooks Online Setup & Mgmt.</li>
+                    <li><i class="fas fa-check"></i> E-Commerce Accounting Support</li>
+                    <li><i class="fas fa-check"></i> Multi-Currency Reconciliation</li>
+                    <li><i class="fas fa-check"></i> Financial Reporting & Forecasting</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATION -->
+    <section id="education" style="background-color: var(--bg-alt);" class="reveal">
+        <h2 class="section-title">Education & Certification</h2>
+        <div class="grid" style="max-width: 800px;">
+            <div class="card">
+                <i class="card-icon fas fa-graduation-cap"></i>
+                <h3>Bachelor of Business Administration</h3>
+                <p style="color: var(--accent); font-weight: 500; margin-bottom: 0.5rem;">June 2018 – July 2021</p>
+                <p>Calicut University, Kerala, India</p>
+            </div>
+            
+            <div class="card">
+                <i class="card-icon fas fa-certificate"></i>
+                <h3>Adv. Diploma in Financial Accounting</h3>
+                <p style="color: var(--accent); font-weight: 500; margin-bottom: 0.5rem;">August 2021 – April 2022</p>
+                <p>College of Commerce, Kerala, India</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="reveal">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email</h3>
+                <a href="mailto:muhammedqa1177@gmail.com">muhammedqa1177@gmail.com</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>Phone</h3>
+                <a href="tel:+97466233477">+974 66233477</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-location-dot"></i>
+                </div>
+                <h3>Location</h3>
+                <p>Doha, Qatar</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                MR<span>.</span>
+            </div>
+            <p style="color: var(--text-light);">Professional Financial Management & Accounting Services</p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/muhammed-rishal-191208250?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/muhammed.rishal_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:muhammedqa1177@gmail.com" class="social-link" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <p style="color: var(--text-light); text-align: center; font-size: 0.9rem;">
+                Languages: English • Malayalam • Hindi • Tamil
+            </p>
+
+            <div class="copyright">
+                &copy; <span id="year"></span> Muhammed Rishal K P. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Set Current Year in Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.8rem 5%';
+                navbar.style.background = 'rgba(11, 17, 32, 0.98)';
+                navbar.style.boxShadow = '0 4px 10px rgba(0,0,0,0.5)';
+            } else {
+                navbar.style.padding = '1.2rem 5%';
+                navbar.style.background = 'rgba(11, 17, 32, 0.95)';
+                navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.3)';
+            }
+        });
+
+        // Scroll Progress Bar Logic
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        });
+
+        // Scroll Reveal Animation Functionality
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
