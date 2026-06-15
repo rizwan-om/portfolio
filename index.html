@@ -664,7 +664,15 @@
             font-weight: 500;
             transition: color 0.3s;
         }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
 
+        .location-link {
+            grid-column: 1 / -1; /* spans both columns */
+        }
         .contact-card a:hover {
             color: var(--accent);
         }
@@ -683,7 +691,41 @@
             max-width: 600px;
             margin: 0 auto;
         }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
 
+        .stat-card {
+            background: #fff;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #0d6efd;
+        }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+        }
         .footer-logo {
             font-size: 1.8rem;
             font-weight: 700;
@@ -922,26 +964,31 @@
     <!-- STATS SECTION -->
     <section id="stats" style="padding: 2rem 5%; margin-top: -4rem; position: relative; z-index: 10;">
         <div class="stats-grid">
+
             <div class="stat-card reveal">
                 <i class="fas fa-calendar-check"></i>
-                <div class="stat-num">4+</div>
+                <div class="stat-num" data-target="4" data-suffix="+">0</div>
                 <div class="stat-label">Years Experience</div>
             </div>
+
             <div class="stat-card reveal">
                 <i class="fas fa-file-invoice"></i>
-                <div class="stat-num">1.5K+</div>
+                <div class="stat-num" data-target="1500" data-suffix="K+">0</div>
                 <div class="stat-label">Invoices Monthly</div>
             </div>
+
             <div class="stat-card reveal">
                 <i class="fas fa-building-columns"></i>
-                <div class="stat-num">100%</div>
+                <div class="stat-num" data-target="100" data-suffix="%">0</div>
                 <div class="stat-label">Reconciliation</div>
             </div>
+
             <div class="stat-card reveal">
                 <i class="fas fa-users-gear"></i>
-                <div class="stat-num">50+</div>
+                <div class="stat-num" data-target="50" data-suffix="+">0</div>
                 <div class="stat-label">Vendor Relations</div>
             </div>
+
         </div>
     </section>
 
@@ -970,7 +1017,7 @@
             <div class="skill-tag"><i class="fas fa-magnifying-glass-dollar"></i> Financial Auditing</div>
             <div class="skill-tag"><i class="fas fa-file-signature"></i> Tax Filing (GSTR/TDS/Income)</div>
             <div class="skill-tag"><i class="fas fa-globe"></i> E-Commerce Accounting</div>
-            <div class="skill-tag"><i class="fas fa-money-bill-transfer"></i> Multi-Currency & Crypto</div>
+            <div class="skill-tag"><i class="fas fa-money-bill-transfer"></i> Multi-Currency & Banking</div>
             <div class="skill-tag"><i class="fas fa-scale-balanced"></i> Statutory Compliance (UAE/Qatar/India)</div>
             <div class="skill-tag"><i class="fas fa-table"></i> MS Excel (Pivot/VLOOKUP)</div>
         </div>
@@ -1127,7 +1174,7 @@
                 <i class="card-icon fas fa-scale-unbalanced"></i>
                 <h3>Compliance & Documentation</h3>
                 <ul>
-                    <li><i class="fas fa-check"></i> GSTR / TDS / TCS Filings</li>
+                    <li><i class="fas fa-check"></i> Document Controlling</li>
                     <li><i class="fas fa-check"></i> Statutory Income Tax Support</li>
                     <li><i class="fas fa-check"></i> Audit Prep & Documentation</li>
                     <li><i class="fas fa-check"></i> HR & Payroll Administration</li>
@@ -1191,15 +1238,15 @@
             </div>
             </a>
 
-            <a href="https://maps.app.goo.gl/K9SAPcy9PvMJReu37" style="text-decoration: none; color: inherit; display: block;">
-            <div class="contact-card">
+            <a href="https://maps.app.goo.gl/K9SAPcy9PvMJReu37" style="text-decoration: none; color: inherit; display: block;" class="location-link">
+            <div class="contact-card location-card">
                 <div class="contact-icon">
                     <i class="fas fa-location-dot"></i>
                 </div>
                 <h3>Location</h3>
                 <p>Doha, Qatar</p>
             </div>
-            </a>
+        </a>
         </div>
     </section>
 
@@ -1237,6 +1284,64 @@
     </footer>
 
     <!-- JAVASCRIPT -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const counters = document.querySelectorAll('.stat-num');
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (!entry.isIntersecting) return;
+
+                const counter = entry.target;
+                const target = parseInt(counter.dataset.target);
+                const suffix = counter.dataset.suffix;
+
+                let current = 0;
+                const duration = 2000;
+                const step = target / (duration / 16);
+
+                function updateCounter() {
+
+                    current += step;
+
+                    if (current < target) {
+
+                        if (target >= 1000) {
+                            counter.textContent = (current / 1000).toFixed(1) + suffix;
+                        } else {
+                            counter.textContent = Math.floor(current) + suffix;
+                        }
+
+                        requestAnimationFrame(updateCounter);
+
+                    } else {
+
+                        if (target >= 1000) {
+                            counter.textContent = (target / 1000).toFixed(1) + suffix;
+                        } else {
+                            counter.textContent = target + suffix;
+                        }
+                    }
+                }
+
+                updateCounter();
+                observer.unobserve(counter);
+
+            });
+
+        }, {
+            threshold: 0.4
+        });
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+
+    });
+    </script>
     <script>
         // Set Current Year in Footer
         document.getElementById('year').textContent = new Date().getFullYear();
